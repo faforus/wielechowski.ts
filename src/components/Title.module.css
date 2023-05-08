@@ -1,0 +1,36 @@
+@import '../css/vars';
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 80%;
+  height: 2rem;
+  min-height: 2rem;
+  margin-bottom: 10px;
+
+  h2 {
+    font-family: $font-title;
+    font-display: swap;
+    font-weight: 400;
+    font-size: 1.4rem;
+  }
+
+  @media (max-width: 1488px) {
+    min-height: 2rem;
+
+    h2 {
+      font-size: 1.2rem;
+    }
+  }
+
+  @media (max-width: 800px) {
+    margin-bottom: 5px;
+
+    h2 {
+      font-size: 0.9rem;
+      line-height: 1.2rem;
+    }
+  }
+}

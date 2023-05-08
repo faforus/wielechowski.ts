@@ -1,0 +1,134 @@
+@import '../../css/vars.css';
+
+.burger-overflow-hidden {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 60px;
+  overflow-x: hidden;
+  pointer-events: none;
+}
+
+.container {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  right: 0;
+  width: 300px;
+  max-width: 300px;
+  height: 100vh;
+  z-index: 99;
+  -webkit-transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+  background-color: white;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform;
+  pointer-events: visible;
+}
+
+.hidden {
+  -webkit-transform: translateX(300px);
+  transform: translateX(300px);
+}
+
+.button {
+  pointer-events: visible;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 5%;
+  top: 7px;
+  width: 50px;
+  height: 44px;
+  z-index: 100;
+  -webkit-transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+  background-color: white;
+}
+
+.move {
+  position: fixed;
+  -webkit-transform: translate(-210px);
+  transform: translate(-210px);
+}
+
+.menu-icon {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 36px;
+  height: 27px;
+  cursor: pointer;
+}
+
+.menu-icon span {
+  display: block;
+  width: 100%;
+  height: 5px;
+  background-color: #333;
+  border-radius: 3px;
+  margin-bottom: 6px;
+  transition: transform 0.3s ease-out;
+}
+
+.bottom-line {
+  transform: rotate(45deg) translateY(6px);
+  transform-origin: bottom right;
+}
+
+.middle-line {
+  opacity: 0;
+}
+
+.top-line {
+  transform: rotate(-45deg) translateY(-5px);
+  transform-origin: bottom right;
+}
+
+.burger-nav {
+  font-family: $font-menu;
+  pointer-events: visible;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 62px;
+}
+
+.burger-nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.burger-nav li {
+  margin-right: 1rem;
+  padding: 1rem;
+  position: relative;
+}
+
+.burger-nav li:last-child {
+  padding-right: 0rem;
+}
+
+.burger-nav ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.burger-nav li a {
+  font-size: 0.8rem;
+}
+
+.burger-ul a.activeB {
+  color: #a0a0a0;
+}
+
+.dropdown-content li:last-child {
+  margin-bottom: -20px;
+}

@@ -1,0 +1,187 @@
+@import '../css/vars';
+
+.form-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form,
+.sent {
+  font-family: $font-contact;
+  font-display: swap;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 500px;
+  max-width: 100%;
+}
+
+.sent {
+  flex-direction: column;
+}
+
+.input-label-caontainer {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
+
+.form label {
+  margin-bottom: 5px;
+}
+
+.form input {
+  height: 30px;
+  width: 200px;
+  font-size: 1rem;
+  text-indent: 5px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.form input:focus,
+.form textarea:focus {
+  outline: none;
+  border: 1px solid #5bc0de;
+  box-shadow: 0 0 5px #5bc0de;
+}
+
+.form textarea {
+  font-size: 1rem;
+  padding: 10px;
+  width: 410px;
+  height: 100px;
+  resize: none;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.form button,
+.sent button {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  width: 150px;
+  height: 30px;
+  border: none;
+  background-color: rgb(83, 83, 83);
+  color: white;
+  border-radius: 0px;
+  cursor: pointer;
+  font-family: $font-contact;
+  font-display: swap;
+  font-weight: 500;
+}
+
+.form button:hover,
+.sent button:hover {
+  background-color: rgb(121, 121, 121);
+}
+
+.rodo {
+  width: 100px;
+  height: 20px;
+  border: none;
+  background-color: rgb(158, 158, 158);
+  color: white;
+  border-radius: 0px;
+  cursor: pointer;
+  font-family: $font-contact;
+  font-display: swap;
+  font-weight: 500;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.rodo:hover {
+  background-color: rgb(121, 121, 121);
+}
+
+.rodo-text {
+  font-family: $font-contact;
+  font-display: swap;
+  width: 400px;
+  margin-top: -5px;
+  text-align: justify;
+  font-size: 0.8rem;
+}
+
+.form input,
+.form textarea,
+.sent p {
+  font-family: $font-contact;
+  font-display: swap;
+  font-weight: 500;
+}
+
+.form textarea::-webkit-scrollbar {
+  width: 8px;
+}
+
+.form textarea::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+
+.form textarea::-webkit-scrollbar-thumb {
+  background-color: #8f8f8f;
+  border-radius: 10px;
+}
+
+.form textarea::-webkit-scrollbar-thumb:hover {
+  background-color: #525252;
+}
+
+.error-message-container {
+  text-align: center;
+  width: 400px;
+  max-width: 100%;
+}
+
+.error-message-container p {
+  font-family: $font-contact;
+  font-display: swap;
+  margin: 5px;
+  color: tomato;
+  font-weight: 600;
+}
+
+@media (max-width: 1200px) {
+  .form {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .rodo-text {
+    max-width: 100%;
+  }
+  .input-label-caontainer {
+    width: 100%;
+    margin: 5px 0 5px 0;
+  }
+  .form {
+    height: auto;
+    width: 100%;
+  }
+  .form input {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .form textarea {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    resize: none;
+  }
+  .form button {
+    max-width: 80%;
+  }
+}

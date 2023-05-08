@@ -1,0 +1,87 @@
+@import '../css/vars';
+
+.img-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 78vh;
+  max-height: 100%;
+  width: 80%;
+  aspect-ratio: 2048/1031;
+
+  & > .img-top {
+    max-width: 100%;
+    width: auto;
+    object-fit: cover;
+    height: 50vh;
+  }
+
+  & > .img-bottom {
+    max-width: 100%;
+    width: auto;
+    object-fit: cover;
+    height: 25vh;
+  }
+
+  & > .color {
+    position: absolute;
+    max-width: 100%;
+    width: auto;
+    object-fit: cover;
+    height: 78vh;
+    z-index: -1;
+  }
+
+  & > .stripe {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 3vh;
+    color: white;
+    font-family: $font-wielechowski;
+    text-transform: lowercase;
+    font-display: swap;
+    font-size: 1.4rem;
+    font-weight: lighter;
+
+    & > .smaller {
+      font-size: 0.8rem;
+    }
+  }
+
+  @media (max-width: 1448px) {
+    width: 100%;
+    aspect-ratio: 2048/1031;
+  }
+
+  @media (max-width: 1295px) {
+    & > .stripe {
+      font-size: 1rem;
+    }
+
+    & > .smaller {
+      font-size: 0.8rem;
+    }
+  }
+
+  @media (max-width: 800px) {
+    width: 90%;
+
+    & > .img-top {
+      height: auto;
+      object-fit: fill;
+    }
+
+    & > .img-bottom {
+      height: auto;
+      object-fit: cover;
+    }
+
+    & > .stripe {
+      width: 100%;
+      background-color: #141d27;
+    }
+  }
+}

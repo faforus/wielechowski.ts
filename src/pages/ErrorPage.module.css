@@ -1,0 +1,17 @@
+@import '../css/vars';
+
+.error {
+  width: 100%;
+  min-height: 550px;
+  height: 78vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    font-family: $font-content;
+    font-display: swap;
+    font-weight: 400;
+  }
+}

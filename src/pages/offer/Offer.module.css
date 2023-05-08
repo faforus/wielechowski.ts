@@ -1,0 +1,222 @@
+@import '../../css/vars';
+
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  max-width: 1300px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.main {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 80%;
+  text-align: center;
+}
+
+.main p,
+.square p,
+.additional-info p {
+  font-family: $font-content;
+  font-display: swap;
+  font-weight: 500;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 40px 50px 40px 50px;
+  width: calc(100% - 80px);
+  background-color: rgb(247, 247, 247);
+}
+
+.additional-info-container {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 50px 10px 50px;
+  background-color: rgb(247, 247, 247);
+}
+
+.main-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 100%;
+  padding: 20px 40px 20px 40px;
+}
+
+.main-right {
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.additional-info {
+  width: 80%;
+}
+
+.partners {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 80%;
+}
+
+.partners-txt {
+  font-size: 1.5rem;
+}
+
+.partners img {
+  width: 270px;
+}
+
+.red-stripe {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  width: 80%;
+  height: 3rem;
+  color: white;
+  background-color: #ff4040;
+}
+
+.red-stripe p {
+  font-family: $font-red-stripe;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.squares {
+  display: flex;
+  margin-top: 10px;
+  width: 80%;
+  height: 200px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.square {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 24%;
+  height: 200px;
+  background-color: rgb(247, 247, 247);
+}
+
+.square p {
+  margin: 2px;
+}
+
+.price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  width: 80%;
+  height: 7rem;
+  background-color: rgb(247, 247, 247);
+  text-align: center;
+}
+
+.price p {
+  font-family: $font-price;
+  font-display: swap;
+  margin: 0;
+}
+
+.price-large {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: green;
+}
+
+.price-currency {
+  font-size: 1.7rem;
+  color: black;
+}
+
+@media (max-width: 1400px) {
+  .wrapper {
+    width: 100%;
+  }
+  .main {
+    width: 90%;
+  }
+  .main-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .main-left {
+    padding-top: 0;
+    padding-bottom: 0;
+    align-items: center;
+    text-align: center;
+  }
+  .red-stripe {
+    width: 90%;
+    text-align: center;
+  }
+  .red-stripe p {
+    margin: 0 30px 0 30px;
+    font-size: 0.9rem;
+  }
+  .squares {
+    width: 90%;
+  }
+  .additional-info {
+    width: 90%;
+    text-align: center;
+  }
+  .price {
+    width: 90%;
+  }
+}
+
+@media (max-width: 800px) {
+  .main-container {
+    padding: 0 0 10px;
+    width: 100%;
+  }
+  .additional-info-container {
+    padding: 0;
+  }
+  .squares {
+    flex-wrap: wrap;
+    width: 90%;
+    height: auto;
+  }
+  .square {
+    min-width: 150px;
+    font-size: 0.8rem;
+    height: 100px;
+    margin-bottom: 10px;
+    flex-basis: 49%;
+  }
+}
+
+.gallery-container {
+  margin-top: 10px;
+  margin-bottom: -40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.larger {
+  font-size: 1.3rem;
+  margin: 0;
+}
