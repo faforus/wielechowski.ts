@@ -45,8 +45,7 @@ const Business = () => {
     .map((img, index) => {
       return { id: index + 1, src: thumbnailImages[index], largeImage: img, alt: '' };
     })
-    .reverse()
-    .sort();
+    .reverse();
 
   return (
     <HelmetProvider>

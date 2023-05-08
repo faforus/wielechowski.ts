@@ -10,15 +10,22 @@ const scrollToTop = () => {
 };
 
 const Burger = () => {
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
   const [toggleBurger, setToggleBurger] = useState(false);
   const isMobile = isMobileChecker();
+
+  useEffect(() => {
+    const handleResize = () => setWindowHeight(window.innerHeight);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [innerHeight]);
 
   useEffect(() => {
     const handleTouchMove = (e: TouchEvent) => {
       e.preventDefault();
     };
 
-    if (toggleBurger && isMobile) {
+    if (toggleBurger && isMobile && windowHeight >= 475) {
       document.addEventListener('touchmove', handleTouchMove, {
         passive: false,
       });
@@ -26,7 +33,7 @@ const Burger = () => {
     return () => {
       document.removeEventListener('touchmove', handleTouchMove);
     };
-  }, [toggleBurger, isMobile]);
+  }, [toggleBurger, isMobile, windowHeight]);
 
   const toggleBurgerMenuHandler = () => {
     setToggleBurger((prev) => !prev);
@@ -75,75 +82,77 @@ const Burger = () => {
           [classes.hidden]: !toggleBurger,
         })}
       >
-        <nav className={classes['burger-nav']}>
-          <ul className={classes['burger-ul']}>
-            <li>
-              <NavLink className={activeHandler} onClick={scrollToTopAndClose} to='/'>
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to=''>Oferta</NavLink>
-              <ul className={classes['dropdown-content']}>
-                <li>
-                  <NavLink
-                    className={activeHandler}
-                    onClick={scrollToTopAndClose}
-                    to='/oferta/sesja-biznesowa'
-                  >
-                    Sesja Biznesowa
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    className={activeHandler}
-                    onClick={scrollToTopAndClose}
-                    to='/oferta/sesja-wizerunkowa'
-                  >
-                    Sesja Wizerunkowa
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    className={activeHandler}
-                    onClick={scrollToTopAndClose}
-                    to='/oferta/reportaz-slubny'
-                  >
-                    Reportaż Ślubny
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    className={activeHandler}
-                    onClick={scrollToTopAndClose}
-                    to='/oferta/reportaz-okolicznosciowy'
-                  >
-                    Reportaż Okolicznościowy
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    className={activeHandler}
-                    onClick={scrollToTopAndClose}
-                    to='/oferta/reportaz-firmowy'
-                  >
-                    Eventy Firmowe / Sportowe
-                  </NavLink>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <NavLink className={activeHandler} onClick={scrollToTopAndClose} to='/galeria'>
-                Galeria
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className={activeHandler} onClick={scrollToTopAndClose} to='/kontakt'>
-                Kontakt
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
+        <div className={classes.subcontainer}>
+          <nav className={classes['burger-nav']}>
+            <ul className={classes['burger-ul']}>
+              <li>
+                <NavLink className={activeHandler} onClick={scrollToTopAndClose} to='/'>
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to=''>Oferta</NavLink>
+                <ul className={classes['dropdown-content']}>
+                  <li>
+                    <NavLink
+                      className={activeHandler}
+                      onClick={scrollToTopAndClose}
+                      to='/oferta/sesja-biznesowa'
+                    >
+                      Sesja Biznesowa
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className={activeHandler}
+                      onClick={scrollToTopAndClose}
+                      to='/oferta/sesja-wizerunkowa'
+                    >
+                      Sesja Wizerunkowa
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className={activeHandler}
+                      onClick={scrollToTopAndClose}
+                      to='/oferta/reportaz-slubny'
+                    >
+                      Reportaż Ślubny
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className={activeHandler}
+                      onClick={scrollToTopAndClose}
+                      to='/oferta/reportaz-okolicznosciowy'
+                    >
+                      Reportaż Okolicznościowy
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className={activeHandler}
+                      onClick={scrollToTopAndClose}
+                      to='/oferta/reportaz-firmowy'
+                    >
+                      Eventy Firmowe / Sportowe
+                    </NavLink>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <NavLink className={activeHandler} onClick={scrollToTopAndClose} to='/galeria'>
+                  Galeria
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className={activeHandler} onClick={scrollToTopAndClose} to='/kontakt'>
+                  Kontakt
+                </NavLink>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
     </div>
   );

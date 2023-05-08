@@ -39,12 +39,18 @@
     justify-content: center;
     width: 80%;
     height: 3vh;
+    min-height: 1rem;
     color: white;
     font-family: $font-wielechowski;
     text-transform: lowercase;
     font-display: swap;
     font-size: 1.4rem;
     font-weight: lighter;
+    z-index: 10;
+
+    @media (max-height: 600px) {
+      font-size: 1rem;
+    }
 
     & > .smaller {
       font-size: 0.8rem;
@@ -68,6 +74,7 @@
 
   @media (max-width: 800px) {
     width: 90%;
+    height: 100%;
 
     & > .img-top {
       height: auto;

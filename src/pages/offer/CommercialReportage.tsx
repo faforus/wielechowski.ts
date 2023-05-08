@@ -51,11 +51,9 @@ const CommercialReportage = () => {
     ) as string[];
   }
 
-  const mappedObjectImages = images
-    .map((img, index) => {
-      return { id: index + 1, src: thumbnailImages[index], largeImage: img, alt: '' };
-    })
-    .reverse();
+  const mappedObjectImages = images.map((img, index) => {
+    return { id: index + 1, src: thumbnailImages[index], largeImage: img, alt: '' };
+  });
 
   return (
     <HelmetProvider>

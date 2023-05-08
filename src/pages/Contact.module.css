@@ -75,6 +75,9 @@
   }
 
   @media (max-width: 1200px) {
+    flex-direction: column;
+    width: 90%;
+    height: auto;
     .contact-image img {
       height: 300px;
       min-height: auto;
@@ -86,10 +89,6 @@
     }
 
     .contact-container {
-      flex-direction: column;
-      width: 90%;
-      height: auto;
-
       .contact-form {
         width: 90%;
         height: auto;
