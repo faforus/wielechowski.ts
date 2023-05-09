@@ -1,12 +1,12 @@
 import React, { Fragment, useState, useRef, useEffect, useMemo } from 'react';
 import classesH from './HGallery.module.css';
 import classesV from './VGallery.module.css';
-import Modal from '../Modal';
+import Modal from '../Modal/Modal';
 import useModal from '../../hooks/use-modal';
 
 type Image = {
   id: number;
-  src: string;
+  imgSrc: string;
   largeImage: string;
   alt: string;
 };
@@ -34,7 +34,7 @@ const VHGallery = ({
 }: Props) => {
   const myDivRef = useRef<HTMLDivElement | null>(null);
   const [currentImage, setCurrentImage] = useState({
-    src: '',
+    imgSrc: '',
     largeImage: '',
     alt: '',
     id: 0,
@@ -68,9 +68,9 @@ const VHGallery = ({
         <img
           onClick={() => {
             setCurrentImage({
-              src: images[index].src,
+              imgSrc: images[index].imgSrc,
               largeImage: images[index].largeImage,
-              alt: images[index].src
+              alt: images[index].imgSrc
                 .replace(/%20/g, ' ')
                 .replace('/static/media/', '')
                 .replace(/\..*$/, '')
@@ -78,8 +78,8 @@ const VHGallery = ({
               id: images[index].id,
             });
           }}
-          src={img.src}
-          alt={img.src
+          src={img.imgSrc}
+          alt={img.imgSrc
             .replace(/%20/g, ' ')
             .replace('/static/media/', '')
             .replace(/\..*$/, '')
@@ -92,9 +92,9 @@ const VHGallery = ({
 
   useEffect(() => {
     setCurrentImage({
-      src: images[0].src,
+      imgSrc: images[0].imgSrc,
       largeImage: images[0].largeImage,
-      alt: images[0].src
+      alt: images[0].imgSrc
         .replace(/%20/g, ' ')
         .replace('/static/media/', '')
         .replace(/\..*$/, '')
@@ -171,7 +171,7 @@ const VHGallery = ({
           </p>
           <div style={{ height: '100%' }}>
             <img
-              src={currentImage.src}
+              src={currentImage.imgSrc}
               alt={currentImage.alt}
               onClick={() => {
                 setModal(true);

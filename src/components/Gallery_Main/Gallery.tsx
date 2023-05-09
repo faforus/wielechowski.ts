@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import classes from './Gallery.module.css';
 import Spinner from '../Spinner';
 import Title from '../Title';
-import Modal from '../Modal';
+import Modal from '../Modal/Modal';
 import { motion } from 'framer-motion';
 import { CUSTOM_MOTION_PROPS } from '../../config/config';
 import useGallery from '../../hooks/use-gallery';

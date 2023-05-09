@@ -43,7 +43,7 @@ const Business = () => {
 
   const mappedObjectImages = images
     .map((img, index) => {
-      return { id: index + 1, src: thumbnailImages[index], largeImage: img, alt: '' };
+      return { id: index + 1, imgSrc: thumbnailImages[index], largeImage: img, alt: '' };
     })
     .reverse();
 

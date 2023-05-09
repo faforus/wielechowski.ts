@@ -1,8 +1,7 @@
 import { useEffect, useCallback, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 type Image = {
-  src: string;
+  imgSrc: string;
   largeImage: string;
   alt: string;
   id: number;
@@ -13,7 +12,6 @@ const useModal = (images: Image[]) => {
   const [tempImgSrc, setTempImgSrc] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [largeImgIsLoading, setLargeImgIsLoading] = useState(false);
-  const navigate = useNavigate();
 
   const handlePrevClick = useCallback(() => {
     setLargeImgIsLoading(true);
@@ -54,28 +52,10 @@ const useModal = (images: Image[]) => {
       document.body.style.overflow = 'auto';
     }
 
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft') {
-        setTimeout(() => {
-          handlePrevClick();
-        }, 300);
-      } else if (e.key === 'ArrowRight') {
-        setTimeout(() => {
-          handleNextClick();
-        }, 300);
-      } else if (e.key === 'Escape') {
-        setModal(false);
-        setTempImgSrc('');
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-
     return () => {
       document.body.style.overflow = 'auto';
-      document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [modal, navigate, handlePrevClick, handleNextClick]);
+  }, [modal]);
 
   return {
     modal,

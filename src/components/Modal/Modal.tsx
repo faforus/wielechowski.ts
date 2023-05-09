@@ -1,36 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import classes from './Modal.module.css';
-import Spinner from './Spinner';
+import Spinner from '../Spinner';
 import { useNavigate } from 'react-router-dom';
+import ArrowButton from './ArrowButton';
+import CloseButton from './CloseButton';
 import classNames from 'classnames';
-
-type ArrowButtonProps = {
-  direction: 'prev' | 'next';
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
-};
-
-const ArrowButton = React.memo(function ArrowButton({ direction, onClick }: ArrowButtonProps) {
-  return (
-    <button
-      className={direction === 'prev' ? classes['prev-button'] : classes['next-button']}
-      onClick={onClick}
-    >
-      {direction === 'prev' ? '‹' : '›'}
-    </button>
-  );
-});
-
-type CloseButtonProps = {
-  onClick: React.MouseEventHandler<HTMLSpanElement>;
-};
-
-const CloseButton = React.memo(function CloseButton({ onClick }: CloseButtonProps) {
-  return (
-    <span onClick={onClick} className={classes['close-button']}>
-      {'×'}
-    </span>
-  );
-});
+import { isMobileChecker } from '../../helpers/isMobile';
 
 type ModalProps = {
   modal: boolean;
@@ -45,7 +20,7 @@ type ModalProps = {
 };
 
 const Modal = (props: ModalProps) => {
-  const imgRef = useRef<HTMLImageElement | null>(null);
+  const isMobile = isMobileChecker();
 
   const {
     modal,
@@ -57,6 +32,9 @@ const Modal = (props: ModalProps) => {
     handlePrevClick,
     handleNextClick,
   } = props;
+
+  const imgRef = useRef<HTMLImageElement | null>(null);
+
   const navigate = useNavigate();
 
   const debounce = <F extends (...args: Parameters<F>) => void>(func: F, wait: number) => {
@@ -101,14 +79,11 @@ const Modal = (props: ModalProps) => {
     document.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      document.body.style.overflow = 'auto';
       document.removeEventListener('keydown', handleKeyDown);
     };
   });
 
   useEffect(() => {
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
     const handleTouchMove = (e: TouchEvent) => {
       e.preventDefault();
     };

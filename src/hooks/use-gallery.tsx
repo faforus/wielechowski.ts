@@ -19,9 +19,6 @@ function useGallery(category: string) {
   const [largeImgIsLoading, setLargeImgIsLoading] = useState(false);
 
   let images;
-
-  /* eslint-disable */
-
   let thumbnailImages;
 
   switch (category) {
@@ -44,10 +41,8 @@ function useGallery(category: string) {
       console.log('No default');
   }
 
-  /* eslintx-enable */
-
   const typedImages = images as string[];
-  const typedThumbnailImages = images as string[];
+  const typedThumbnailImages = thumbnailImages as string[];
 
   const { horizontalImages, verticalImages } = combineAndSortHorizontalVertical(
     typedImages,

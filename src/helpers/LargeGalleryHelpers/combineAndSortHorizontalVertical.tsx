@@ -39,6 +39,5 @@ export const combineAndSortHorizontalVertical = (
       });
     }
   });
-
   return { horizontalImages, verticalImages };
 };
