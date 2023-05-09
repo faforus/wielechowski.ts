@@ -3,7 +3,7 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Title from '../../components/Title';
 import classes from './Offer.module.css';
 import webpSupported from '../../helpers/webpSupport';
-import VerticalMiniGallery from '../../components/Gallery_Mini_Vertical/VerticalMiniGallery';
+import VHGallery from '../../components/Gallery_Small_VnH/VHGallery';
 import { motion } from 'framer-motion';
 import { CUSTOM_MOTION_PROPS } from '../../config/config';
 
@@ -75,7 +75,16 @@ const Business = () => {
               </p>
             </div>
             <div className={classes['main-right']}>
-              <VerticalMiniGallery images={mappedObjectImages} />
+              <VHGallery
+                images={mappedObjectImages}
+                container='mini-gallery'
+                first='mini-gallery-left'
+                second='mini-gallery-right'
+                arrowOne='arrowup'
+                arrowTwo='arrowdown'
+                directionOne='up'
+                directionTwo='down'
+              />
             </div>
           </div>
         </div>

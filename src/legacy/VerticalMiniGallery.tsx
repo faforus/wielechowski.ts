@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useRef, useEffect, useMemo } from 'react';
 import classes from './VerticalMiniGallery.module.css';
-import Modal from '../../components/Modal';
-import useModal from '../../hooks/use-modal';
+import Modal from '../components/Modal';
+import useModal from '../hooks/use-modal';
 
 type Image = {
   id: number;

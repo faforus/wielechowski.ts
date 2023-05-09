@@ -10,8 +10,8 @@ type Image = {
 
 const useModal = (images: Image[]) => {
   const [modal, setModal] = useState(false);
-  const [tempImgSrc, setTempImgSrc] = useState<string>('');
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [tempImgSrc, setTempImgSrc] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [largeImgIsLoading, setLargeImgIsLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -55,15 +55,15 @@ const useModal = (images: Image[]) => {
     }
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === '37') {
+      if (e.key === 'ArrowLeft') {
         setTimeout(() => {
           handlePrevClick();
         }, 300);
-      } else if (e.key === '39') {
+      } else if (e.key === 'ArrowRight') {
         setTimeout(() => {
           handleNextClick();
         }, 300);
-      } else if (e.key === '27') {
+      } else if (e.key === 'Escape') {
         setModal(false);
         setTempImgSrc('');
       }

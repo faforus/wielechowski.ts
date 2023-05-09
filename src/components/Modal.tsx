@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
 import classes from './Modal.module.css';
 import Spinner from './Spinner';
 import { useNavigate } from 'react-router-dom';
@@ -206,17 +205,6 @@ const Modal = (props: ModalProps) => {
       />
     </div>
   );
-};
-
-Modal.propTypes = {
-  modal: PropTypes.bool.isRequired,
-  setModal: PropTypes.func.isRequired,
-  tempImgSrc: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  setTempImgSrc: PropTypes.func.isRequired,
-  largeImgIsLoading: PropTypes.bool.isRequired,
-  handleLargeImageLoad: PropTypes.func.isRequired,
-  handlePrevClick: PropTypes.func.isRequired,
-  handleNextClick: PropTypes.func.isRequired,
 };
 
 export default Modal;

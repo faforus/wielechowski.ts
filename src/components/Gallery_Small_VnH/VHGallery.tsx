@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useRef, useEffect, useMemo } from 'react';
-import classes from './HorizontalMiniGallery.module.css';
-import Modal from '../../components/Modal';
+import classesH from './HGallery.module.css';
+import classesV from './VGallery.module.css';
+import Modal from '../Modal';
 import useModal from '../../hooks/use-modal';
 
 type Image = {
@@ -12,9 +13,25 @@ type Image = {
 
 type Props = {
   images: Array<Image>;
+  container: string;
+  first: string;
+  second: string;
+  arrowOne: string;
+  arrowTwo: string;
+  directionOne: 'left' | 'right' | 'up' | 'down';
+  directionTwo: 'left' | 'right' | 'up' | 'down';
 };
 
-const HorizontalMiniGallery = ({ images }: Props) => {
+const VHGallery = ({
+  images,
+  container,
+  first,
+  second,
+  arrowOne,
+  arrowTwo,
+  directionOne,
+  directionTwo,
+}: Props) => {
   const myDivRef = useRef<HTMLDivElement | null>(null);
   const [currentImage, setCurrentImage] = useState({
     src: '',
@@ -88,13 +105,36 @@ const HorizontalMiniGallery = ({ images }: Props) => {
     setTempImgSrc(images[0].largeImage);
   }, [setCurrentImage, setCurrentIndex, setTempImgSrc, images]);
 
-  function scroll(direction: 'left' | 'right') {
+  function scroll(direction: 'left' | 'right' | 'up' | 'down') {
     if (myDivRef.current) {
-      const sign = direction === 'left' ? -1 : 1;
-      myDivRef.current.scrollBy({
-        left: sign * myDivRef.current.clientWidth * 0.3,
-        behavior: 'smooth',
-      });
+      switch (direction) {
+        case 'left':
+          myDivRef.current.scrollBy({
+            left: -myDivRef.current.clientWidth * 0.3,
+            behavior: 'smooth',
+          });
+          break;
+        case 'right':
+          myDivRef.current.scrollBy({
+            left: myDivRef.current.clientWidth * 0.3,
+            behavior: 'smooth',
+          });
+          break;
+        case 'up':
+          myDivRef.current.scrollBy({
+            top: myDivRef.current.clientHeight,
+            behavior: 'smooth',
+          });
+          break;
+        case 'down':
+          myDivRef.current.scrollBy({
+            top: -myDivRef.current.clientHeight,
+            behavior: 'smooth',
+          });
+          break;
+        default:
+          break;
+      }
     }
   }
 
@@ -111,21 +151,21 @@ const HorizontalMiniGallery = ({ images }: Props) => {
         handlePrevClick={handlePrevClick}
         handleNextClick={handleNextClick}
       />
-      <div className={classes['mini-gallery-horizontal']}>
-        <div className={classes['mini-gallery-top']}>
+      <div className={directionOne === 'left' ? classesH[container] : classesV[container]}>
+        <div className={directionOne === 'left' ? classesH[first] : classesV[first]}>
           <p
             onClick={() => {
-              scroll('left');
+              scroll(directionOne);
             }}
-            className={classes.arrowleft}
+            className={directionOne === 'left' ? classesH[arrowOne] : classesV[arrowOne]}
           >
             ›
           </p>{' '}
           <p
             onClick={() => {
-              scroll('right');
+              scroll(directionTwo);
             }}
-            className={classes.arrowright}
+            className={directionOne === 'left' ? classesH[arrowTwo] : classesV[arrowTwo]}
           >
             ›
           </p>
@@ -141,7 +181,10 @@ const HorizontalMiniGallery = ({ images }: Props) => {
             />
           </div>
         </div>
-        <div ref={myDivRef} className={classes['mini-gallery-bottom']}>
+        <div
+          ref={myDivRef}
+          className={directionOne === 'left' ? classesH[second] : classesV[second]}
+        >
           {mappedImages}
         </div>
       </div>
@@ -149,4 +192,4 @@ const HorizontalMiniGallery = ({ images }: Props) => {
   );
 };
 
-export default HorizontalMiniGallery;
+export default VHGallery;

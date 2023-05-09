@@ -3,7 +3,7 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Title from '../../components/Title';
 import classes from './Offer.module.css';
 import webpSupported from '../../helpers/webpSupport';
-import HorizontalMiniGallery from '../../components/Gallery_Mini_Horizontal/HorizontalMiniGallery';
+import VHGallery from '../../components/Gallery_Small_VnH/VHGallery';
 import { motion } from 'framer-motion';
 import { CUSTOM_MOTION_PROPS } from '../../config/config';
 
@@ -76,7 +76,16 @@ const NonCommercialReportage = () => {
               <p>urodziny / imieniny</p>
             </div>
             <div className={classes['main-right']}>
-              <HorizontalMiniGallery images={mappedObjectImages} />
+              <VHGallery
+                images={mappedObjectImages}
+                container='mini-gallery-horizontal'
+                first='mini-gallery-top'
+                second='mini-gallery-bottom'
+                arrowOne='arrowleft'
+                arrowTwo='arrowright'
+                directionOne='left'
+                directionTwo='right'
+              />
             </div>
           </div>
         </div>
