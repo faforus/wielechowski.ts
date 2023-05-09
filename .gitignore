@@ -21,7 +21,6 @@
 /src/assets
 
 # misc
-README.md
 .firebaserc
 /.firebase
 .firebase/
