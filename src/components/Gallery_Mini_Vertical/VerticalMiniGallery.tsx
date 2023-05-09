@@ -36,8 +36,8 @@ const HorizontalMiniGallery = ({ images }: Props) => {
   }: {
     modal: boolean;
     setModal: React.Dispatch<React.SetStateAction<boolean>>;
-    tempImgSrc: string | number;
-    setTempImgSrc: React.Dispatch<React.SetStateAction<string | number>>;
+    tempImgSrc: string;
+    setTempImgSrc: React.Dispatch<React.SetStateAction<string>>;
     setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
     largeImgIsLoading: boolean;
     handleLargeImageLoad: () => void;
@@ -129,13 +129,16 @@ const HorizontalMiniGallery = ({ images }: Props) => {
           >
             ›
           </p>
-          <div
-            onClick={() => {
-              setModal(true);
-            }}
-            style={{ height: '100%' }}
-          >
-            <img src={currentImage.src} alt={currentImage.alt} />
+          <div style={{ height: '100%' }}>
+            <img
+              src={currentImage.src}
+              alt={currentImage.alt}
+              onClick={() => {
+                setModal(true);
+                setCurrentIndex(currentImage.id);
+                setTempImgSrc(currentImage.largeImage);
+              }}
+            />
           </div>
         </div>
         <div ref={myDivRef} className={classes['mini-gallery-right']}>

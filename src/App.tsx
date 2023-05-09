@@ -9,7 +9,9 @@ import WelcomeModal from './components/WelcomeModal';
 import Footer from './layout/Footer';
 import { preloadAppImages } from './helpers/preloadAppImages';
 
-preloadAppImages();
+setTimeout(() => {
+  preloadAppImages();
+}, 3000);
 
 function App() {
   const [loadedWelcome, setLoadedWelcome] = useState(false);

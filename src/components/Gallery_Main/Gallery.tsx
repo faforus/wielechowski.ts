@@ -10,8 +10,8 @@ import { CUSTOM_MOTION_PROPS } from '../../config/config';
 type GalleryProps = {
   modal: boolean;
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
-  tempImgSrc: string | number;
-  setTempImgSrc: React.Dispatch<React.SetStateAction<string | number>>;
+  tempImgSrc: string;
+  setTempImgSrc: React.Dispatch<React.SetStateAction<string>>;
   largeImgIsLoading: boolean;
   handleLargeImageLoad: () => void;
   handlePrevClick: () => void;

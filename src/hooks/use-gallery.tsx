@@ -13,7 +13,7 @@ import { combineAndSortHorizontalVertical } from '../helpers/LargeGalleryHelpers
 function useGallery(category: string) {
   const [modal, setModal] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [tempImgSrc, setTempImgSrc] = useState<string | number>('');
+  const [tempImgSrc, setTempImgSrc] = useState<string>('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loadedImages, setLoadedImages] = useState(0);
   const [largeImgIsLoading, setLargeImgIsLoading] = useState(false);

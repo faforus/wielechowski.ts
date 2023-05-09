@@ -36,8 +36,8 @@ const CloseButton = React.memo(function CloseButton({ onClick }: CloseButtonProp
 type ModalProps = {
   modal: boolean;
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
-  tempImgSrc: string | number;
-  setTempImgSrc: React.Dispatch<React.SetStateAction<string | number>>;
+  tempImgSrc: string;
+  setTempImgSrc: React.Dispatch<React.SetStateAction<string>>;
   setCurrentIndex?: React.Dispatch<React.SetStateAction<number>>;
   largeImgIsLoading: boolean;
   handleLargeImageLoad: () => void;
@@ -195,7 +195,7 @@ const Modal = (props: ModalProps) => {
           .replace('/static/media/', '')
           .replace(/\..*$/, '')
           .slice(1)}
-        src={tempImgSrc.toString()}
+        src={tempImgSrc}
         onLoad={(e: React.SyntheticEvent<HTMLImageElement>) => {
           e.currentTarget.style.opacity = '1';
           handleLargeImageLoad();

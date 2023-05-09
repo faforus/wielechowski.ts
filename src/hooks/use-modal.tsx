@@ -10,7 +10,7 @@ type Image = {
 
 const useModal = (images: Image[]) => {
   const [modal, setModal] = useState(false);
-  const [tempImgSrc, setTempImgSrc] = useState<string | number>('');
+  const [tempImgSrc, setTempImgSrc] = useState<string>('');
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [largeImgIsLoading, setLargeImgIsLoading] = useState(false);
   const navigate = useNavigate();
