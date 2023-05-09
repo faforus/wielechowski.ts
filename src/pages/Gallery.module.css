@@ -46,20 +46,20 @@
     }
 
     .tab3 {
-      background-image: url('../assets/images/plener.jpg');
-      background-position: 0% 50%;
-
-      @supports (background-image: url('../assets/webpimages/plener.webp')) {
-        background-image: url('../assets/webpimages/plener.webp');
-      }
-    }
-
-    .tab4 {
       background-image: url('../assets/images/animals.jpg');
       background-position: 35% 67%;
 
       @supports (background-image: url('../assets/webpimages/animals.webp')) {
         background-image: url('../assets/webpimages/animals.webp');
+      }
+    }
+
+    .tab4 {
+      background-image: url('../assets/images/plener.jpg');
+      background-position: 0% 50%;
+
+      @supports (background-image: url('../assets/webpimages/plener.webp')) {
+        background-image: url('../assets/webpimages/plener.webp');
       }
     }
 

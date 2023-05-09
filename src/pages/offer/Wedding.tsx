@@ -2,26 +2,11 @@ import React from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import classes from './Offer.module.css';
 import Title from '../../components/Title';
-import useGallery from '../../hooks/use-gallery';
 import Gallery from '../../components/Gallery_Main/Gallery';
 import { motion } from 'framer-motion';
 import { CUSTOM_MOTION_PROPS } from '../../config/config';
 
 const Wedding = () => {
-  const {
-    modal,
-    largeImgIsLoading,
-    tempImgSrc,
-    handleLargeImageLoad,
-    setModal,
-    setTempImgSrc,
-    isLoading,
-    mappedImgs,
-    mappedUnsortedImgs,
-    handlePrevClick,
-    handleNextClick,
-  } = useGallery('wedding');
-
   return (
     <HelmetProvider>
       <Helmet>
@@ -59,21 +44,7 @@ const Wedding = () => {
           </div>
         </div>
         <div className={classes['gallery-container']}>
-          <Gallery
-            category={'Galeria Ślubna'}
-            link='empty'
-            modal={modal}
-            largeImgIsLoading={largeImgIsLoading}
-            tempImgSrc={tempImgSrc}
-            handleLargeImageLoad={handleLargeImageLoad}
-            setModal={setModal}
-            setTempImgSrc={setTempImgSrc}
-            isLoading={isLoading}
-            mappedImgs={mappedImgs}
-            mappedUnsortedImgs={mappedUnsortedImgs}
-            handlePrevClick={handlePrevClick}
-            handleNextClick={handleNextClick}
-          />
+          <Gallery title='Galeria Ślubna' link='empty' category='wedding' />
         </div>
         <div className={classes.price}>
           <p>Ceny od:</p>

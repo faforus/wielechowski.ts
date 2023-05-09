@@ -6,42 +6,47 @@ import Title from '../Title';
 import Modal from '../Modal';
 import { motion } from 'framer-motion';
 import { CUSTOM_MOTION_PROPS } from '../../config/config';
+import useGallery from '../../hooks/use-gallery';
 
-type GalleryProps = {
-  modal: boolean;
-  setModal: React.Dispatch<React.SetStateAction<boolean>>;
-  tempImgSrc: string;
-  setTempImgSrc: React.Dispatch<React.SetStateAction<string>>;
-  largeImgIsLoading: boolean;
-  handleLargeImageLoad: () => void;
-  handlePrevClick: () => void;
-  handleNextClick: () => void;
-  category: string;
-  isLoading: boolean;
-  mappedImgs: JSX.Element[];
-  mappedUnsortedImgs: JSX.Element[];
+interface GalleryProps {
+  title: string;
   link: string;
-};
+  category: 'animals' | 'reportage' | 'studio' | 'travel' | 'wedding';
+}
 
 function Gallery(props: GalleryProps) {
+  const {
+    modal,
+    largeImgIsLoading,
+    tempImgSrc,
+    handleLargeImageLoad,
+    setModal,
+    setTempImgSrc,
+    isLoading,
+    mappedImgs,
+    mappedUnsortedImgs,
+    handlePrevClick,
+    handleNextClick,
+  } = useGallery(props.category);
+
   return (
     <Fragment>
       <Modal
-        modal={props.modal}
-        setModal={props.setModal}
-        tempImgSrc={props.tempImgSrc}
-        setTempImgSrc={props.setTempImgSrc}
-        largeImgIsLoading={props.largeImgIsLoading}
-        handleLargeImageLoad={props.handleLargeImageLoad}
-        handlePrevClick={props.handlePrevClick}
-        handleNextClick={props.handleNextClick}
+        modal={modal}
+        setModal={setModal}
+        tempImgSrc={tempImgSrc}
+        setTempImgSrc={setTempImgSrc}
+        largeImgIsLoading={largeImgIsLoading}
+        handleLargeImageLoad={handleLargeImageLoad}
+        handlePrevClick={handlePrevClick}
+        handleNextClick={handleNextClick}
       />
       <motion.div {...CUSTOM_MOTION_PROPS} className={classes.wrapper}>
-        <Title title={props.category} />
-        {props.isLoading && <Spinner />}
-        <div style={{ display: props.isLoading ? 'none' : 'block' }} className={classes.container}>
-          {props.mappedImgs}
-          {props.mappedUnsortedImgs}
+        <Title title={props.title} />
+        {isLoading && <Spinner />}
+        <div style={{ display: isLoading ? 'none' : 'block' }} className={classes.container}>
+          {mappedImgs}
+          {mappedUnsortedImgs}
         </div>
         <div className={classes['button-container']}>
           {props.link === 'empty' ? (

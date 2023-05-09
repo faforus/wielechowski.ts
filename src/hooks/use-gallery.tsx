@@ -31,7 +31,7 @@ function useGallery(category: string) {
     case 'studio':
       ({ images, thumbnailImages } = importStudio());
       break;
-    case 'outdoors':
+    case 'travel':
       ({ images, thumbnailImages } = importOutdoors());
       break;
     case 'reportage':
