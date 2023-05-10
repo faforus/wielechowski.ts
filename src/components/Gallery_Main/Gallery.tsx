@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classes from './Gallery.module.css';
 import Spinner from '../Spinner';
@@ -15,19 +15,24 @@ interface GalleryProps {
 }
 
 function Gallery(props: GalleryProps) {
-  const {
+  const [modal, setModal] = useState(false);
+  const [tempImgSrc, setTempImgSrc] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [largeImageIsLoading, setLargeImageIsLoading] = useState(false);
+
+  const { category } = props;
+
+  const { isLoading, mappedImgs, mappedUnsortedImgs, sortedImages } = useGallery({
+    category,
     modal,
-    largeImgIsLoading,
-    tempImgSrc,
-    handleLargeImageLoad,
     setModal,
+    tempImgSrc,
     setTempImgSrc,
-    isLoading,
-    mappedImgs,
-    mappedUnsortedImgs,
-    handlePrevClick,
-    handleNextClick,
-  } = useGallery(props.category);
+    currentIndex,
+    setCurrentIndex,
+    largeImageIsLoading,
+    setLargeImageIsLoading,
+  });
 
   return (
     <Fragment>
@@ -36,10 +41,11 @@ function Gallery(props: GalleryProps) {
         setModal={setModal}
         tempImgSrc={tempImgSrc}
         setTempImgSrc={setTempImgSrc}
-        largeImgIsLoading={largeImgIsLoading}
-        handleLargeImageLoad={handleLargeImageLoad}
-        handlePrevClick={handlePrevClick}
-        handleNextClick={handleNextClick}
+        images={sortedImages}
+        currentIndex={currentIndex}
+        setCurrentIndex={setCurrentIndex}
+        largeImageIsLoading={largeImageIsLoading}
+        setLargeImageIsLoading={setLargeImageIsLoading}
       />
       <motion.div {...CUSTOM_MOTION_PROPS} className={classes.wrapper}>
         <Title title={props.title} />

@@ -10,13 +10,23 @@ import {
 import { sortImagesIntoGrid } from '../helpers/LargeGalleryHelpers/sortImagesIntoGrid';
 import { combineAndSortHorizontalVertical } from '../helpers/LargeGalleryHelpers/combineAndSortHorizontalVertical';
 
-function useGallery(category: string) {
-  const [modal, setModal] = useState(false);
+type UseGalleryProps = {
+  category: string;
+  modal: boolean;
+  setModal: React.Dispatch<React.SetStateAction<boolean>>;
+  tempImgSrc: string;
+  setTempImgSrc: React.Dispatch<React.SetStateAction<string>>;
+  currentIndex: number;
+  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
+  largeImageIsLoading: boolean;
+  setLargeImageIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+function useGallery(props: UseGalleryProps) {
   const [isLoading, setIsLoading] = useState(true);
-  const [tempImgSrc, setTempImgSrc] = useState('');
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [loadedImages, setLoadedImages] = useState(0);
-  const [largeImgIsLoading, setLargeImgIsLoading] = useState(false);
+
+  const { category, setModal, setTempImgSrc, setCurrentIndex, setLargeImageIsLoading } = props;
 
   let images;
   let thumbnailImages;
@@ -92,7 +102,7 @@ function useGallery(category: string) {
               src={item.imgSrc}
               alt={item.alt}
               onClick={() => {
-                largeImageHandler();
+                setLargeImageIsLoading(true);
                 setTempImgSrc(item.largeImage);
                 setCurrentIndex(item.id);
                 setModal(true);
@@ -128,7 +138,7 @@ function useGallery(category: string) {
             src={item.imgSrc}
             alt={item.alt}
             onClick={() => {
-              largeImageHandler();
+              setLargeImageIsLoading(true);
               setTempImgSrc(item.largeImage);
               setCurrentIndex(item.id);
               setModal(true);
@@ -159,34 +169,6 @@ function useGallery(category: string) {
 
   const { mappedImgs, mappedUnsortedImgs } = splitInt14AndMapImages(sortedImages);
 
-  const handlePrevClick = useCallback(() => {
-    setLargeImgIsLoading(true);
-    const currentImageIndex = sortedImages.findIndex((img) => img.id === currentIndex);
-    const newIndex = (currentImageIndex + sortedImages.length - 1) % sortedImages.length;
-    setTempImgSrc(sortedImages[newIndex].largeImage);
-    setCurrentIndex(sortedImages[newIndex].id);
-    const newImg = new Image();
-    newImg.src = sortedImages[newIndex].largeImage;
-
-    const prevIndex = (newIndex + sortedImages.length - 1) % sortedImages.length;
-    const prevImg = new Image();
-    prevImg.src = sortedImages[prevIndex].largeImage;
-  }, [sortedImages, currentIndex]);
-
-  const handleNextClick = useCallback(() => {
-    setLargeImgIsLoading(true);
-    const currentImageIndex = sortedImages.findIndex((img) => img.id === currentIndex);
-    const newIndex = (currentImageIndex + 1) % sortedImages.length;
-    setTempImgSrc(sortedImages[newIndex].largeImage);
-    setCurrentIndex(sortedImages[newIndex].id);
-    const newImg = new Image();
-    newImg.src = sortedImages[newIndex].largeImage;
-
-    const nextIndex = (newIndex + 1) % sortedImages.length;
-    const nextImg = new Image();
-    nextImg.src = sortedImages[nextIndex].largeImage;
-  }, [sortedImages, currentIndex]);
-
   const preloadTwoImages = useCallback(
     (passedID: number) => {
       const currentImageIndex = sortedImages.findIndex((img) => img.id === passedID);
@@ -204,14 +186,6 @@ function useGallery(category: string) {
     [sortedImages],
   );
 
-  const largeImageHandler = () => {
-    setLargeImgIsLoading(true);
-  };
-
-  const handleLargeImageLoad = () => {
-    setLargeImgIsLoading(false);
-  };
-
   useEffect(() => {
     if (loadedImages !== 0 && loadedImages === images.length) {
       setIsLoading(false);
@@ -219,17 +193,10 @@ function useGallery(category: string) {
   }, [loadedImages, typedImages.length]);
 
   return {
-    modal,
-    largeImgIsLoading,
-    tempImgSrc,
-    handleLargeImageLoad,
-    setModal,
-    setTempImgSrc,
     isLoading,
     mappedImgs,
     mappedUnsortedImgs,
-    handlePrevClick,
-    handleNextClick,
+    sortedImages,
   };
 }
 

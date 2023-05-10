@@ -2,7 +2,6 @@ import React, { Fragment, useState, useRef, useEffect, useMemo } from 'react';
 import classesH from './HGallery.module.css';
 import classesV from './VGallery.module.css';
 import Modal from '../Modal/Modal';
-import useModal from '../../hooks/use-modal';
 
 type Image = {
   id: number;
@@ -33,34 +32,16 @@ const VHGallery = ({
   directionTwo,
 }: Props) => {
   const myDivRef = useRef<HTMLDivElement | null>(null);
+  const [modal, setModal] = useState(false);
+  const [tempImgSrc, setTempImgSrc] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [largeImageIsLoading, setLargeImageIsLoading] = useState(false);
   const [currentImage, setCurrentImage] = useState({
     imgSrc: '',
     largeImage: '',
     alt: '',
     id: 0,
   });
-
-  const {
-    modal,
-    setModal,
-    tempImgSrc,
-    setTempImgSrc,
-    setCurrentIndex,
-    largeImgIsLoading,
-    handleLargeImageLoad,
-    handlePrevClick,
-    handleNextClick,
-  }: {
-    modal: boolean;
-    setModal: React.Dispatch<React.SetStateAction<boolean>>;
-    tempImgSrc: string;
-    setTempImgSrc: React.Dispatch<React.SetStateAction<string>>;
-    setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
-    largeImgIsLoading: boolean;
-    handleLargeImageLoad: () => void;
-    handlePrevClick: () => void;
-    handleNextClick: () => void;
-  } = useModal(images);
 
   const mappedImages = useMemo(() => {
     return images.map((img, index) => {
@@ -145,11 +126,11 @@ const VHGallery = ({
         setModal={setModal}
         tempImgSrc={tempImgSrc}
         setTempImgSrc={setTempImgSrc}
+        images={images}
+        currentIndex={currentIndex}
         setCurrentIndex={setCurrentIndex}
-        largeImgIsLoading={largeImgIsLoading}
-        handleLargeImageLoad={handleLargeImageLoad}
-        handlePrevClick={handlePrevClick}
-        handleNextClick={handleNextClick}
+        largeImageIsLoading={largeImageIsLoading}
+        setLargeImageIsLoading={setLargeImageIsLoading}
       />
       <div className={directionOne === 'left' ? classesH[container] : classesV[container]}>
         <div className={directionOne === 'left' ? classesH[first] : classesV[first]}>
@@ -174,9 +155,15 @@ const VHGallery = ({
               src={currentImage.imgSrc}
               alt={currentImage.alt}
               onClick={() => {
+                if (currentImage.largeImage !== tempImgSrc) {
+                  setLargeImageIsLoading(true);
+                }
                 setModal(true);
                 setCurrentIndex(currentImage.id);
                 setTempImgSrc(currentImage.largeImage);
+              }}
+              onLoad={() => {
+                setLargeImageIsLoading(false);
               }}
             />
           </div>

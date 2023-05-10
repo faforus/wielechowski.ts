@@ -6,32 +6,59 @@ import ArrowButton from './ArrowButton';
 import CloseButton from './CloseButton';
 import classNames from 'classnames';
 import { isMobileChecker } from '../../helpers/isMobile';
+import useModal from '../../hooks/use-modal';
+
+type Image = {
+  id: number;
+  imgSrc: string;
+  largeImage: string;
+  alt: string;
+};
 
 type ModalProps = {
+  images: Image[];
   modal: boolean;
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
   tempImgSrc: string;
   setTempImgSrc: React.Dispatch<React.SetStateAction<string>>;
-  setCurrentIndex?: React.Dispatch<React.SetStateAction<number>>;
-  largeImgIsLoading: boolean;
-  handleLargeImageLoad: () => void;
-  handlePrevClick: () => void;
-  handleNextClick: () => void;
+  currentIndex: number;
+  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
+  largeImageIsLoading: boolean;
+  setLargeImageIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const Modal = (props: ModalProps) => {
   const isMobile = isMobileChecker();
 
   const {
+    images,
     modal,
     setModal,
     tempImgSrc,
     setTempImgSrc,
-    largeImgIsLoading,
-    handleLargeImageLoad,
+    currentIndex,
+    setCurrentIndex,
+    largeImageIsLoading,
+    setLargeImageIsLoading,
+  } = props;
+
+  const {
     handlePrevClick,
     handleNextClick,
-  } = props;
+  }: {
+    handlePrevClick: () => void;
+    handleNextClick: () => void;
+  } = useModal({
+    images,
+    modal,
+    setModal,
+    tempImgSrc,
+    setTempImgSrc,
+    currentIndex,
+    setCurrentIndex,
+    largeImageIsLoading,
+    setLargeImageIsLoading,
+  });
 
   const imgRef = useRef<HTMLImageElement | null>(null);
 
@@ -156,7 +183,7 @@ const Modal = (props: ModalProps) => {
           }
         }}
       />
-      {largeImgIsLoading && (
+      {largeImageIsLoading && (
         <div className={classes.spinner}>
           <Spinner />
         </div>
@@ -172,7 +199,7 @@ const Modal = (props: ModalProps) => {
         src={tempImgSrc}
         onLoad={(e: React.SyntheticEvent<HTMLImageElement>) => {
           e.currentTarget.style.opacity = '1';
-          handleLargeImageLoad();
+          setLargeImageIsLoading(false);
         }}
         onClick={(e) => {
           e.stopPropagation();

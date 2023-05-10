@@ -1,4 +1,4 @@
-import { useEffect, useCallback, useState } from 'react';
+import { useEffect, useCallback } from 'react';
 
 type Image = {
   imgSrc: string;
@@ -7,14 +7,31 @@ type Image = {
   id: number;
 };
 
-const useModal = (images: Image[]) => {
-  const [modal, setModal] = useState(false);
-  const [tempImgSrc, setTempImgSrc] = useState('');
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [largeImgIsLoading, setLargeImgIsLoading] = useState(false);
+type UseModalProps = {
+  images: Image[];
+  modal: boolean;
+  setModal: React.Dispatch<React.SetStateAction<boolean>>;
+  tempImgSrc: string;
+  setTempImgSrc: React.Dispatch<React.SetStateAction<string>>;
+  currentIndex: number;
+  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
+  largeImageIsLoading: boolean;
+  setLargeImageIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+};
+const useModal = (props: UseModalProps) => {
+  const {
+    images,
+    modal,
+    setModal,
+    tempImgSrc,
+    setTempImgSrc,
+    currentIndex,
+    setCurrentIndex,
+    setLargeImageIsLoading,
+  } = props;
 
   const handlePrevClick = useCallback(() => {
-    setLargeImgIsLoading(true);
+    setLargeImageIsLoading(true);
     const currentImageIndex = images.findIndex((img) => img.id === currentIndex);
     const newIndex = (currentImageIndex + images.length - 1) % images.length;
     setTempImgSrc(images[newIndex].largeImage);
@@ -28,7 +45,7 @@ const useModal = (images: Image[]) => {
   }, [images, currentIndex]);
 
   const handleNextClick = useCallback(() => {
-    setLargeImgIsLoading(true);
+    setLargeImageIsLoading(true);
     const currentImageIndex = images.findIndex((img) => img.id === currentIndex);
     const newIndex = (currentImageIndex + 1) % images.length;
     setTempImgSrc(images[newIndex].largeImage);
@@ -40,10 +57,6 @@ const useModal = (images: Image[]) => {
     const nextImg = new Image();
     nextImg.src = images[nextIndex].largeImage;
   }, [images, currentIndex]);
-
-  const handleLargeImageLoad = () => {
-    setLargeImgIsLoading(false);
-  };
 
   useEffect(() => {
     if (modal) {
@@ -61,12 +74,7 @@ const useModal = (images: Image[]) => {
     modal,
     setModal,
     tempImgSrc,
-    setLargeImgIsLoading,
-    currentIndex,
-    setCurrentIndex,
     setTempImgSrc,
-    handleLargeImageLoad,
-    largeImgIsLoading,
     handlePrevClick,
     handleNextClick,
   };
