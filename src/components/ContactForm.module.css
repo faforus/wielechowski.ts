@@ -8,6 +8,14 @@
   align-items: center;
 }
 
+.spinner-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
+
 .form,
 .sent {
   font-family: $font-contact;

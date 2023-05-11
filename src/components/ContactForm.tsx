@@ -167,7 +167,11 @@ const ContactForm = () => {
     );
   }
   if (sendingForm) {
-    content = <Spinner maxHeight='100px' />;
+    content = (
+      <div className={classes['spinner-container']}>
+        <Spinner maxHeight='100px' />
+      </div>
+    );
   }
   if (sendingFormOutcome === 'sent') {
     content = (
