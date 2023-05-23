@@ -1,16 +1,10 @@
-This is most up to date TypeScript version of this project!
-This project is constantly updated.
+This is most up to date TypeScript version of this project! This project is constantly updated.
 
 [https://wielechowski.net/] - Page is LIVE
 
-
-[https://nextjs-e44af.web.app/] - Next.js demo also available
-
-(not optimised and not updated)
-
+[https://nextjs-e44af.web.app/] - Next.js demo also available (not optimised and not updated)
 
 2-in-1 Photography and React Portfolio
-
 
 I built this website from scratch, and all the photographs used in the project were taken and edited by me.
 
@@ -18,6 +12,7 @@ I built this website from scratch, and all the photographs used in the project w
 
 -Tailwind implementation
 
+-more motion effects
 
 [FEATURES]
 
@@ -27,21 +22,19 @@ Single Page Application with routing.
 
 Facebook-ready with Open Graph (OG) image integration and descriptions. No server side rendering yet.
 
-Responsive design for large screens, regular screens, and mobile devices.
+Responsive design for large, regular screens, and mobile devices.
 
-Animated burger menu.
+Animated burger menu. (press ctrl + m to switch to burger menu)
 
 Preloading of crucial images.
 
-WEBP image support.
-
-Appropriate image types loaded without the picture element for devices that either support or do not support .WEBP images, with the help of the ua-parser-js library.
+WEBP image support - appropriate image types loaded without the picture element for devices that either support or do not support WEBP images - with the help of the ua-parser-js library.
 
 Smooth page transitions using the Framer Motion library.
 
 Functional contact form set up with Firebase functions, Fetch API, Express, and Nodemailer library.
 
-Two mini galleries with custom scroll - vertical and horizontal with modal.
+Two mini galleries with custom scroll - vertical and horizontal, and with modal.
 
 One large gallery with modal and image sorting.
 
@@ -61,9 +54,7 @@ Automatic generation of image alt attributes from modified src strings.
 
 Loading state management.
 
-Keyboard navigation support. No touch implemented yet.
-
-Loading state and animation management.
+Keyboard navigation support for modal. No touch implemented yet.
 
 Upon opening the modal, the next and previous images are preloaded, and subsequent images are preloaded when navigating right or left.
 
@@ -76,9 +67,5 @@ Utilize Router to send HTTP requests for the contact form.
 Implement server-side validation for the contact form.
 
 Create unique routes/links for large images in modal.
-
-Manage WEBP support using Redux.
-
-Implement lazy loading for galleries.
 
 Enhance SEO.
