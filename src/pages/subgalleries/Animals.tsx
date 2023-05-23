@@ -6,7 +6,7 @@ const Animals = () => {
   return (
     <HelmetProvider>
       <Helmet>
-        <title>FW Fotografia - Galeria Zwierzęta - Dzikie i Udomowione</title>
+        <title>Galeria Zwierzęta - Dzikie i Udomowione</title>
       </Helmet>
       <Gallery title='Zwierzęta' link='/galeria' category='animals' />
     </HelmetProvider>

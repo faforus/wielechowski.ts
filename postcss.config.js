@@ -1,7 +1,6 @@
 module.exports = {
   plugins: [
     require('postcss-color-mod-function'),
-    require('autoprefixer'),
     require('postcss-preset-env')({
       stage: 2,
       features: {
