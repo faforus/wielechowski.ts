@@ -1,6 +1,6 @@
-This is most up to date TypeScript version of this project! This project is constantly updated.
+This is most up to date TypeScript version of this project! 
 
-[https://wielechowski.net/] - Page is LIVE
+[https://wielechowski.net/] - LIVE PAGE
 
 [https://nextjs-e44af.web.app/] - Next.js demo also available (not optimised and not updated)
 
