@@ -95,23 +95,23 @@ const Business = () => {
           <div className={classes.square}>
             <p>indywidualnie</p>
             <p>1 zdjęcie</p>
-            <p>150 zł</p>
+            <p>200 zł</p>
           </div>
           <div className={classes.square}>
             <p>indywidualnie</p>
             <p>1 osoba</p>
             <p>3 zdjęcia</p>
-            <p>250 zł</p>
+            <p>350 zł</p>
           </div>
           <div className={classes.square}>
             <p>grupy</p>
             <p>5 - 10 osób</p>
-            <p>130 zł / zdj</p>
+            <p>150zł / zdj</p>
           </div>
           <div className={classes.square}>
             <p>grupy</p>
             <p>10+ osób</p>
-            <p>120 zł / zdj</p>
+            <p>140 zł / zdj</p>
           </div>
         </div>
         <div className={classes['additional-info']}>
