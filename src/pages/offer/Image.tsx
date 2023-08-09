@@ -83,15 +83,15 @@ const Image = () => {
         <div className={classes.squares}>
           <div className={classes.square}>
             <p>3 zdjęcia</p>
-            <p>350 zł</p>
+            <p>400 zł</p>
           </div>
           <div className={classes.square}>
             <p>5 zdjęć</p>
-            <p>450 zł</p>
+            <p>550 zł</p>
           </div>
           <div className={classes.square}>
             <p>7 zdjęć</p>
-            <p>500 zł</p>
+            <p>650 zł</p>
           </div>
           <div className={classes.square}>
             <p>8+ zdjęć</p>

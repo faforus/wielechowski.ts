@@ -101,7 +101,7 @@ const Business = () => {
             <p>indywidualnie</p>
             <p>1 osoba</p>
             <p>3 zdjęcia</p>
-            <p>350 zł</p>
+            <p>400 zł</p>
           </div>
           <div className={classes.square}>
             <p>grupy</p>
