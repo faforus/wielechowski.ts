@@ -49,7 +49,7 @@ const Wedding = () => {
         <div className={classes.price}>
           <p>Ceny od:</p>
           <p className={classes['price-large']}>
-            3000<span className={classes['price-currency']}> zł</span>
+            4000<span className={classes['price-currency']}> zł</span>
           </p>
         </div>
       </motion.div>

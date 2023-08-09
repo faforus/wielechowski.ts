@@ -92,7 +92,7 @@ const NonCommercialReportage = () => {
         <div className={classes.price}>
           <p>Ceny od:</p>
           <p className={classes['price-large']}>
-            500<span className={classes['price-currency']}> zł</span>
+            750<span className={classes['price-currency']}> zł</span>
           </p>
         </div>
         <div className={classes.main}>
