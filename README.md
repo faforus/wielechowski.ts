@@ -1,1 +1,2 @@
-www.wielechowski.net
+[www.wielechowski.net]
+[www.wielechowski.me]
