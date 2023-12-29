@@ -80,5 +80,5 @@ const Home = () => {
     </HelmetProvider>
   );
 };
-
+// redo this page
 export default Home;
